@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo
+END
+walk.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/walk.c
+END
+garthz.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/garthz.c
+END
+message_format.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/message_format.h
+END
+PARAMS
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/PARAMS
+END
+control_demo_helper
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/control_demo_helper
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/.project
+END
+control_demo
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/control_demo
+END
+polynomials.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/polynomials.c
+END
+.cproject
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/.cproject
+END
+standing.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/standing.c
+END
+exercise.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/exercise.c
+END
+start_walking.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/start_walking.c
+END
+makevars.scm
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/makevars.scm
+END
+polynomials.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/polynomials.h
+END
+standing.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/standing.h
+END
+sysvars.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/sysvars.h
+END
+Makefile-dependencies
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/Makefile-dependencies
+END
+control_demo_helper.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/control_demo_helper.c
+END
+joint.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/joint.c
+END
+display
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/display
+END
+demo.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/demo.c
+END
+control_demo.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/control_demo.c
+END
+local_protocol_version.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/local_protocol_version.h
+END
+run_control_demo
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/run_control_demo
+END
+globals.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/globals.h
+END
+joint.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/joint.h
+END
+control_demo.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/control_demo.h
+END
+system.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/system.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/control_demo/Makefile
+END

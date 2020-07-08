@@ -1,0 +1,47 @@
+2006-09-19
+..
+The Flame robot is connected to the host computer
+dutw782.wbmt.tudelft.nl using a local network simply consisting of a
+single crossover CAT5 cable between the robot and the PCI ethernet
+card.
+
+The port on both the robot and host can in theory support 100Mbps, but
+this was found to be unreliable, possibly due to the short cable
+segment, so the port was configured on the robot side to only support
+10Mbps; see /etc/init.d/disable_ethernet_autoneg.sh
+
+The motherboard on dutw782 ethernet has Linux name eth0, and is used
+for the Internet connection.  The eth0 IP assigned by TU Delft DHCP is
+130.161.19.14, dutw782.wbmt.tudelft.nl.
+
+The PCI ethernet card is named eth1, for the robot LAN, with MAC
+08:00:09:ec:86:ca.
+
+Under Debian Linux the ethernet port configuration is specified in
+/etc/network/interfaces.  Both eth0 and eth1 are configured to
+auto-configure at boot time.
+
+To manually bring the link up or down:
+  ifup eth1        
+  ifdown eth1
+
+The ipmasq package is used for NAT (Network Address Translation) so
+any host on the LAN (including the robot) can access the Internet.
+
+A suitable setup for a LAN host or the robot:
+	IP 192.168.1.2
+	mask 255.255.255.0
+	router 192.168.1.1	(this is the LAN address of dutw782)
+	DNS 130.161.180.1 130.161.180.65
+
+Restarting the NAT:
+  /etc/init.d/ipmasq restart
+
+Un-installing the NAT software package:
+  apt-get remove ipmasq
+
+Re-installing the NAT software package:
+  apt-get install ipmasq
+
+
+

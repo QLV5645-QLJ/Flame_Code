@@ -1,0 +1,4 @@
+#!/bin/sh
+
+control_demo_helper &
+control_demo

@@ -1,0 +1,41 @@
+2006-09-19
+
+The Flame robot is running a normal installation of Debian Linux with
+a minimal set of packages installed.  Many commands which work on
+dutw782 also work on the robot.
+
+A few special commands for the robot only:
+
+ Flame_off		safely power down the robot
+ rodisk			remount the FLASH drive read-only
+ run_control_demo	a script to start the two programs comprising the sample controller
+
+These are all stored in /usr/local/bin
+
+For a discussion of backing up the system, see robot-system-backup.
+
+================================================================
+
+The rodisk script is really trivial, here's the complete contents
+of /usr/local/bin/rodisk:
+
+#!/bin/sh
+# Remount the root file system read-only as a hedge against
+# disk errors when turning the power off.
+
+sync
+mount /dev/hda1 / -r -o remount
+
+
+================================================================
+Checking the FLASH drive.
+
+Automatic disk checking was disabled since the machine boots so
+frequently and the clock is often wrong. However, it is a good
+idea to do it by hand occasionally, perhaps right after a backup.
+
+  rodisk
+  fsck /dev/hda1
+
+================================================================
+

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files
+END
+Flame_wakeup
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/Flame_wakeup
+END
+AthenaDAQ_test
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/AthenaDAQ_test
+END
+DMM16AT_test
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/DMM16AT_test
+END
+FlameIO_test
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/FlameIO_test
+END
+sensor_console
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/sensor_console
+END
+Flame_off
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/BME-BMechE/FLAME/!svn/ver/6/trunk/test_programs/installed-files/Flame_off
+END

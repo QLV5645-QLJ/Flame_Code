@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities
+END
+dsinfo
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities/dsinfo
+END
+dsinfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities/dsinfo.cpp
+END
+dsplot
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities/dsplot
+END
+dsplot.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities/dsplot.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/BME-BMechE/FLAME/!svn/ver/6/trunk/data_utilities/Makefile
+END

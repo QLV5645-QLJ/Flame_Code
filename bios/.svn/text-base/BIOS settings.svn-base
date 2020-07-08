@@ -1,0 +1,128 @@
+20 nov 2007
+
+BIOS settings FLAME
+
+###MAIN###
+Primary Master
+	AUTO
+	CHS Format
+	Cylinders	[980]
+	Heads		[16]
+	Sectors		[32]
+	
+	Multi Sector Transfers 	[Disabled]
+	LBA Mode Control	[Disabled]
+	32 Bit I/O		[Disabled]
+	Transfer Mode		[FPIO 4 / DMA 2]
+	Ultra DMA Mode 		[Disabled]
+	S.M.A.R.T. Monitoring 	[Enabled]
+Primary Slave 		[None]
+Secondary Master	[None]
+Secondary Slave		[None]
+
+Memory Shadow
+	System Shadow	[Enabled]
+	Video Shadow	[Enabled]
+
+Memory Cache
+	Memory Cache			[Enabled]
+	Cache System BIOS area:		[Write Protect]
+	Cache Video BIOS area:		[Write Protect]
+	Cache Base 0-512k:		[Write Back]
+	Cache Base 512k-640k:		[Write Back]
+	Cache Extended Memory Area	[Write Back]
+
+	Cache A000 - AFFF		[Disabled]
+	Cache B000 - BFFF		[Disabled]
+	Cache C800 - CBFF		[Write Protect]
+	Cache CC00 - CFFF		[Write Protect]
+	Cache D000 - D3FF		[Disabled]
+	Cache D400 - D7FF		[Disabled]
+	Cache D800 - DBFF		[Write Protect]
+	Cache DC00 - DFFF		[Write Protect]
+	Cache E000 - E3FF		[Write Protect]
+	Cache E400 - E7FF		[Write Protect]
+	Cache E800 - EBFF		[Write Protect]
+	Cache EC00 - EFFF		[Write Protect]
+
+Quick Boot Mode 	[Enabled]
+Floppy Check		[Disabled]
+Summary Screen		[Disabled]
+
+System Memory		640 KB
+Extended Memory		121856 KB
+
+###Advanced###
+
+PCI Configuration
+	PCI/PNP ISA UMB Region Exclusion
+		All [Available]
+	PCI/PNP ISA IRQ Resource Exclusion
+		IRQ 5 [Reserved] 
+		Rest [Availible]
+	PCI/PNP ISA DMA Resource Exclusion
+		All [Available]
+
+
+	PCI IRQ line 1	[Auto Select]
+	PCI IRQ line 2	[Auto Select]
+	PCI IRQ line 3	[Auto Select]
+	PCI IRQ line 4	[Auto Select]
+
+Advanced Chipset Control
+	PCI Delay Transaction		[Enabled]
+	Aperture Size 			[64M]
+	Frame Buffer Size		[8Mb]
+	AGP Rate			[4x]
+	Expansion Bus Performance	[Normal]
+
+I/O Device Configuration
+	Serial Port A			[Enabled]
+		Base I/O address 	[3F8]
+		Interrupt		[IRQ 4]
+	Serial Port B			[Enabled]
+		Mode 			[Normal]
+		Base I/O address 	[2F8]
+		Interrupt		[IRQ 3]
+	Parallel Port 			[Enabled]
+		Mode 			[ECP]
+		Base I/O Address	[378]
+		Interrupt		[IRQ 7]
+		DMA Channel		[DMA 3]
+	Serial Port C			[Enabled]
+		Base I/O address 	[3E8]
+		Interrupt		[IRQ 9]
+	Serial Port D			[Enabled]
+		Base I/O address 	[2E8]
+		Interrupt		[IRQ 15]
+
+PS/2 Mouse 		[Auto Detect]
+Boot Video Device 	[Auto]
+LCD Panel Type		[7]
+Local Bus IDE Adapter	[Primary]
+Legacy USB Suport	[Disabled]
+
+On Chip Multi Function Device
+	OnChip USB 2 Divice 	[Enabled]
+	Onboard Audio		[Enabled]
+	Legacy Audio		[Disabled]
+	Modem Device		[Disabled]
+
+Large Disk Access Mode 		[Other]
+Installed O/S			[Other]
+Reset Configuration Data	[No]
+
+Console Redirection		
+	Continue C.R. after POST	[Off]
+	Baud Rate			[115.2K]
+	Console Connection		[Direct]
+	Console Type			[PC ANSI]
+	Flow Control			[None]
+	Com Port Address		[Disabled]
+	# of video pages to support	[1]
+
+FPGA Mode: 			[Enabled]
+
+###Power###
+Power Savings 			[Disabled]
+

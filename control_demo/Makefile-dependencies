@@ -1,0 +1,42 @@
+# DO NOT DELETE
+
+control_demo.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+control_demo.o: ../hardware_drivers/DMM16AT.h
+control_demo.o: ../hardware_drivers/Mesanet_4I36.h
+control_demo.o: ../hardware_drivers/FlameIO_defs.h ../utility/utility.h
+control_demo.o: ../utility/dataset.h ../utility/record.h
+control_demo.o: ../utility/system_state_var.h ../utility/dataset.h
+control_demo.o: ../utility/system_state_var.h
+control_demo.o: ../real_time_support/RTAI_user_space_realtime.h
+control_demo.o: ../real_time_support/RTAI_mailbox_messaging.h
+control_demo.o: ../real_time_support/messaging.h
+control_demo.o: ../real_time_support/messages.h
+control_demo.o: ../real_time_support/UDP_messaging.h
+control_demo.o: ../real_time_support/protocol_version.h system.h
+control_demo.o: message_format.h control_demo.h globals.h joint.h sysvars.h
+control_demo.o: ../hardware_drivers/FlameIO_sysvars.h
+control_demo_helper.o: ../utility/utility.h ../utility/dataset.h
+control_demo_helper.o: ../utility/record.h ../utility/system_state_var.h
+control_demo_helper.o: ../utility/dataset.h ../utility/system_state_var.h
+control_demo_helper.o: ../real_time_support/RTAI_user_space_realtime.h
+control_demo_helper.o: ../real_time_support/RTAI_mailbox_messaging.h
+control_demo_helper.o: ../real_time_support/messaging.h
+control_demo_helper.o: ../real_time_support/messages.h
+control_demo_helper.o: ../real_time_support/UDP_messaging.h
+control_demo_helper.o: ../real_time_support/protocol_version.h
+control_demo_helper.o: ../hardware_drivers/FlameIO_defs.h system.h
+control_demo_helper.o: message_format.h
+demo.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+demo.o: ../hardware_drivers/DMM16AT.h ../hardware_drivers/Mesanet_4I36.h
+demo.o: ../hardware_drivers/FlameIO_defs.h system.h globals.h joint.h
+demo.o: polynomials.h
+garthz.o: system.h joint.h globals.h polynomials.h
+joint.o: joint.h globals.h
+standing.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+standing.o: ../hardware_drivers/DMM16AT.h ../hardware_drivers/Mesanet_4I36.h
+standing.o: ../hardware_drivers/FlameIO_defs.h system.h globals.h joint.h
+standing.o: polynomials.h
+control_demo.o: globals.h joint.h
+globals.o: system.h ../hardware_drivers/FlameIO_defs.h
+joint.o: globals.h
+message_format.o: ../real_time_support/messages.h

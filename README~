@@ -1,0 +1,50 @@
+This code is the original Delft trajectory controller that runs on Flame.
+It was pulled from the Delft repository by Mark Locascio on 5-25-10
+Several very small edits have been made to this code by Jane Miller
+This code is intended to only be run on the physical robot, and no in simulation.
+===============
+This directory contains a body of code related to the "Flame"
+biped robot under development at TU Delft.  The robot
+incorporates a PC/104 stack running RTAI Linux.  The code
+mostly is meant for this target, but some host code is also included.
+
+   - Garth Zeglin, 2005-12-06
+
+
+The hardware and realtime support is written as a set of static
+libraries to be linked into an application
+
+Support libraries:
+
+  hardware_drivers/	user-space drivers, i.e., direct port I/O
+  real_time_support/	wrapper code for using RTAI, messaging support
+  utility/		other miscellaneous useful routines, e.g. errprintf
+  scheme/               support code written in the Guile dialect of Scheme
+  xsens/                support for a xsens IMU (inertial measurement unit)
+  mrdplot/              an interactive plotting program for MATLAB
+
+Applications:
+
+  test_programs/	miscellanous binaries for debugging libraries
+  Diamond_utilities/	programs that use the Diamond Systems library to configure and test hardware
+  data_utilities/       progams to manipulate dataset data files
+
+  control_demo/		a simple controller to demonstrate a working system
+
+================================================================
+
+The code is now stored in a subversion repository, available at this URL:
+
+   svn+ssh://dutw782.wbmt.tudelft.nl/home/subversion/Flame
+
+or locally:
+
+   file:///home/subversion/Flame
+
+The repository has the following branches:
+
+  trunk/	main line of code, with up to date hardware parameters, etc.
+
+  branches/joe	the local modifications made by Joe in the Spring of 2006, not up to date with the hardware
+
+================================================================

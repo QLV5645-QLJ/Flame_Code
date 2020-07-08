@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers
+END
+DMM16AT.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/DMM16AT.h
+END
+FlameIO.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/FlameIO.h
+END
+Mesanet_4I36.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/Mesanet_4I36.cpp
+END
+FlameIO_defs.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/FlameIO_defs.h
+END
+IO_permissions.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/IO_permissions.cpp
+END
+AthenaDAQ.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/AthenaDAQ.cpp
+END
+Mesanet_4I36.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/Mesanet_4I36.h
+END
+IO_permissions.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/IO_permissions.h
+END
+Makefile.bak
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/Makefile.bak
+END
+Mesanet_4I36_auxiliary.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/Mesanet_4I36_auxiliary.cpp
+END
+DMM16AT.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/DMM16AT.cpp
+END
+AthenaDAQ.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/AthenaDAQ.h
+END
+FlameIO.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/FlameIO.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/hardware_drivers/Makefile
+END

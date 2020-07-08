@@ -1,0 +1,47 @@
+# $Id: Makefile,v 1.7 2005/12/14 10:18:44 garthz Exp $
+# Makefile : for the hardware drivers for the PC/104 stack for the Flame biped robot
+# Copyright (c) 2001-2005 Garth Zeglin. Provided under the terms of the
+# GNU General Public License as included in the top level directory.
+
+LIBOBJS = DMM16AT.o Mesanet_4I36.o IO_permissions.o AthenaDAQ.o FlameIO.o
+
+ALL = libflameio.a
+CFLAGS = -I..
+
+default: $(ALL)
+
+libflameio.a: $(LIBOBJS)
+	ar cru $@ $^
+
+#%.o : %.c; $(CC) $(CFLAGS)  -c -o $@ $<
+%.o : %.cpp libdmalloc.a; g++ $(CFLAGS)  -c -o $@ $< -ldmalloc
+
+clean:
+	-rm $(ALL) *.o FlameIO_sysvars.h
+
+dist-clean: clean
+
+################################################################
+# auto-generated source
+#FlameIO_defs.h FlameIO_sysvars.h: FlameIO_makevars.scm
+#	guile -e main -s $<
+
+################################################################
+# hand-tuned dependencies
+FlameIO.h: FlameIO_defs.h
+
+################################################################
+# automatic dependencies
+depend:
+	makedepend -I.. -fMakefile -Y -- *.cpp 
+
+# DO NOT DELETE
+
+AthenaDAQ.o: AthenaDAQ.h ../utility/utility.h
+DMM16AT.o: DMM16AT.h ../utility/utility.h
+FlameIO.o: FlameIO.h ../hardware_drivers/AthenaDAQ.h
+FlameIO.o: ../hardware_drivers/DMM16AT.h ../hardware_drivers/Mesanet_4I36.h
+FlameIO.o: ../hardware_drivers/FlameIO_defs.h IO_permissions.h
+FlameIO.o: ../utility/utility.h
+IO_permissions.o: ../utility/utility.h
+Mesanet_4I36.o: ../hardware_drivers/Mesanet_4I36.h

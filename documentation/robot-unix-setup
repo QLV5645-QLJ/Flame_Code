@@ -1,0 +1,229 @@
+2006-09-19
+Garth Zeglin
+
+The Flame robot is running a normal installation of Debian Linux with
+a minimal set of packages installed. Here are a few notes on the specifics.
+
+================================================================
+Minimizing the system
+
+During setup I removed as many packages as I could identify which were
+not necessary for the robot.  This got the system down to about 150M.
+This is still larger than necessary, but the advantage of keeping the
+package system intact (i.e., not deleting files willy-nilly) is that
+it makes it easier to install new packages, including any newly
+compiled kernels.  But more could be deleted, e.g., from
+/usr/share/locale.
+
+The second phase was eliminating as many boot-time scripts as
+possible and all unnecessary server processes.  Debian is
+normally configured to support a desktop system with all the
+usual user features, like printer servers and font servers.
+Nearly all of that can be turned off.  Also, disk checking was
+disabled since the machine boots so frequently, although that can
+lead to long term problems; the FLASH disk should occasionally be
+checked by hand with fsck; see /etc/init.d/remountroot.sh.
+
+The boot scripts are all in /etc/init.d.  Symbolic links are defined
+in directories /etc/rc?.d which defines when and which scripts to run.
+They follow a consistent naming convention which defines the order of
+execution and whether they are intended for startup or shutdown.  The
+different rc directories correspond to different system state.
+
+It is easy to disable a boot script by just renaming it out of the
+pattern; this should apparent from examining the files on Flame.
+Maybe a little more time could still be squeezed out of boot, but most
+of it is currently just the kernel performing usual hardware discovery
+and initialization; and it's not clear how to minimize that.
+
+================================================================
+Debian package commands
+
+To install a package from the Debian server:
+ apt-get install <package-name>
+
+To remove one:
+ apt-get remove <package-name>
+
+All installed packages:
+ dpkg --get-selections
+
+A similar list in a different format:
+ dpkg -l
+
+To list all files contained in an installed package:
+ dpkg -L <package-name>
+
+To find the package which "owns" a particular file:
+ dpkg -S <file-name>
+
+E.g.:
+  dpkg -S /usr/bin/gcc
+  output:     gcc: /usr/bin/gcc
+
+
+================================================================
+Boot time actions: RTAI loading and controller execution
+
+RTAI is loaded at boot by /etc/init.d/RTAI_init.sh,
+which is executed by virtue of a symbolic link in /etc/rc2.d:
+
+  lrwxr-xr-x   1 root root   22 Dec 16  2005 S90rtai -> ../init.d/RTAI_init.sh
+
+RTAI can be manually unloaded by running the script as follows:
+  /etc/init.d/RTAI_init stop
+ 
+Similarly, there is a simple script in /etc/init.d/Flame.sh which
+could be used to start up a default controller.  Right now it
+just initializes the hardware and flashes the lights.  The link
+in /etc/rc2.d will cause it to run after RTAI has loaded:
+
+  lrwxr-xr-x   1 root root   18 Sep 20 08:47 S95flame -> ../init.d/Flame.sh
+
+--------------------------------------------------
+Here is the contents of /etc/init.d/RTAI_init.sh:
+
+#! /bin/sh
+# This is intended to be installed in /etc/init.d for use as a startup/shutdown script.
+
+# exit immediately on failure of any command
+set -e
+
+# define a function to load the RTAI modules
+load_RTAI() {
+
+    if [ -d '/proc/rtai' ]; 
+    then
+	echo "RTAI already appears to be loaded."
+    else
+	echo "Loading RTAI modules with insmod.."
+	insmod /usr/realtime/modules/rtai_hal.o
+	insmod /usr/realtime/modules/rtai_up.o
+	insmod /usr/realtime/modules/rtai_lxrt.o
+	insmod /usr/realtime/modules/rtai_sem.o
+	insmod /usr/realtime/modules/rtai_mbx.o
+	insmod /usr/realtime/modules/rtai_msg.o
+    fi
+}
+# define a function to unload the RTAI modules
+unload_RTAI() {
+
+    if [ ! -d '/proc/rtai' ]; 
+    then
+	echo "RTAI does not appear to be loaded."
+    else
+	echo "Removing RTAI modules from kernel with rmmod."
+	rmmod rtai_msg
+	rmmod rtai_mbx
+	rmmod rtai_sem
+	rmmod rtai_lxrt
+	rmmod rtai_up
+	rmmod rtai_hal
+    fi
+}
+
+# select action in the standard init script way
+case "$1" in
+  start)
+	load_RTAI
+	;;
+
+  stop)
+	unload_RTAI
+	;;
+
+  reload|force-reload|restart)
+	unload_RTAI
+	load_RTAI
+	;;
+
+  *)
+	echo "Usage: /etc/init.d/RTAI_init.sh {start|stop|reload|force-reload|restart}"
+	exit 1
+esac
+
+exit 0
+# end of RTAI_init.sh
+
+================================================================
+Kernel configuration.
+
+Flame is running a custom kernel, with the RTAI Adeos patches
+installed, and configured for a minimal set of drivers.  The various
+kernel configuration settings tried at different times are cached in
+~garthz/kernel-configurations on dutw782.  The most recent is in the
+same directory as this file; there is one for the kernel itself and
+one for RTAI.  The kernel configuration is a copy of
+/usr/src/linux/.config generated during kernel compilation.
+
+Following are my notes taken while actually building the current
+Flame kernel.
+
+--------------------------------------------------
+2006-09-15
+
+Recompiling the kernel with sound support, following my previous notes.
+
+[ ----------- reset the gcc version to 2.95.4 ---------- ]
+su
+cd /usr/bin
+rm gcc
+ln -s gcc-2.95 gcc
+
+[ ----------- rebuilding the kernel ------------- ]
+cd /usr/src/linux
+make-kpkg clean
+[ checked that the .config file is as I left it ]
+
+make-kpkg --added-patches adeos --revision=FLAME.3 --append_to_version rtaisnd --config menuconfig kernel_image modules_image
+
+[ enabled Sound/Sound card support 
+  turned off AudioPCI
+  enabled VIA 82C686 Audio Codec ]
+
+[ it then compiled successfully, created a new .deb file in /usr/src ]
+[ made a new backup copy of /usr/src/linux/.config in ~garthz/kernel-configurations ]
+
+[ ------------- installing the new kernel ------------- ]
+[ backed up Flame FLASH drive across the network ]
+[ transferred the .deb file to Flame using scp]
+
+[ on Flame: ]
+dpkg --install kernel-image-2.4.27rtaisnd_FLAME.3_i386.deb
+
+[ added a new entry to /etc/lilo.conf ]
+lilo
+
+[ it boots fine, and sound works, but RTAI complains about the version number ]
+
+[ ---------------- recompiling RTAI for the new kernel --------------- ]
+
+[ on the host dutw782: ]
+su
+cd /usr/src/rtai-3.2
+[ skipped "make menuconfig" since nothing needs to change ]
+make
+
+[ installing to a temporary directory to make it easier to package: ]
+mkdir /tmp/rtai-tree
+make install DESTDIR=/tmp/rtai-tree
+
+[ it screws up the location of one file ]
+cd /tmp/rtai-tree
+mv tmp/rtai-tree/usr/realtime/modules/rtai_calibrate.ko usr/realtime/modules
+rm -r tmp
+tar cvzf rtai.tgz usr     [ to create an installation tar file ]
+
+[ copied rtai.tgz to Flame ]
+
+[ on Flame: ]
+cd /
+mv /usr/realtime /usr/realtime.good
+tar xvzf /root/rtai.tgz
+
+[ to test loading RTAI: ]
+/etc/init.d/RTAI_init.sh start
+
+[ it works ]
+
+---------- end of kernel compilation notes ------------------------------------

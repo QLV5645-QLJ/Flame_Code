@@ -1,0 +1,114 @@
+06-09-20
+
+Backup of the robot controller.
+
+The simplest way to back up the FLASH drive on Flame is to do a
+bit-for-bit copy of the entire drive across the network to a file on
+dutw782, which takes a couple of minutes.
+
+Here is a sample sequence.  You'll need to adjust user and file
+names. BE VERY CAREFUL TO GET THIS EXACTLY CORRECT.  It is easy to
+wipe out the entire drive with a simple error to the 'dd' command:
+
+ rodisk
+ dd if=/dev/hda1 | ssh garthz@tender 'cat >disk-images/2006-09-15'
+
+Here's a complete explanation:
+
+'rodisk' makes the FLASH drive read-only using the "mount" command;
+this makes it safe to do the bit for bit transfer.  rodisk is a
+trivial script in /usr/local/bin.
+
+'dd' is a traditional unix command to do block data transfer.
+'if=/dev/hda' is the argument to take input from the raw disk device
+/dev/hda1, which is the partition on the FLASH drive holding the unix
+filesystem.  The output of 'dd' by default is piped to the standard
+output.
+
+The vertical bar '|' directs the standard output of 'dd' to 'ssh',
+which is the normal remote-login program, in this case used to run a
+program on dutw782 to stream the data into a file.
+
+'cat > <filename>' will stream data from standard input into a file;
+this will run remotely on dutw782.  The quotes around this portion are
+important so the local shell on the robot doesn't try to interpret the
+'>' redirection specifier.
+
+'garthz@tender' is a user and computer name on which to run the
+'cat' command.  'tender' is an alias for dutw782 specified in
+/etc/hosts on the robot.
+
+================================================================
+Examining a backup image on the host.
+
+The backup files created with this process are ext3 filesystem
+images for the Flame robot controller; each is a bit-for-bit copy
+of a partition from one of the FLASH devices.
+
+Uncompressed ext3 images can be mounted using the loopback device
+on the host (not the robot):
+
+  mount 2006-09-20-internal-flash-image /flash -o loop
+
+The filesystem image will appears as a writable tree under /flash.
+
+================================================================
+Compact FLASH card and USB reader.
+
+The compact FLASH card was used while bootstrapping the system;
+it is formatted as a Linux ext3 filesystem, and can be read and
+written on the host using the USB interface.
+
+The USB reader appears as /dev/sdb on the host, a CompactFlash can
+be mounted like so:
+  mount /dev/sdb1 /flash
+
+On the robot controller, the CompactFlash interface can be
+installed in series with the FLASH carrier board on the IDE
+interface.  In that configuration, the CompactFlash appears as
+/dev/hdb and the FLASH drive appears as /dev/hda.  Here is a way
+to back up the internal FLASH drive directly to a file on the
+CompactFlash:
+
+  mount /dev/hdb1 /flash                            # mount the Compact Flash 
+  mount /dev/hda1 / -r -o remount                   # make the root disk read-only
+  dd if=/dev/hda1 | gzip -9 >/flash/flash-image.gz  # make compressed backup image
+
+Alternatively, the CompactFlash could be mounted and treated like
+a normal disk, and individual files simply copied over.
+
+================================================================
+Restoring a backup.
+
+A full explanation of restoring a backup image is beyond the
+scope of this document, since there are lot of possible
+contingencies.  But here are a few hints.
+
+If just a few files need to be repaired, then the robot can boot
+up normally, the filesystem image can be loopback mounted on the
+host, and files transferred across as needed.  That is the
+safest, most ordinary case.  This could even be used to rewrite
+every file, perhaps using rsync to do the transfer efficiently.
+
+If the robot filesystem is really trashed, the basic problem is
+that the robot CPU is normally the only device which can write
+directly to the FLASH drive, and so the robot has to boot off
+something else to start up.  But that's not actually true, the
+FLASH drive could be installed on an IDE channel in a normal PC.
+So the most straightforward path would be to install the FLASH
+drive on the carrier board in the PC, figure out which device it
+appears as under Linux, and do a bit-for-bit restore to the
+partition.  If the FLASH drive needs to be completely replaced,
+it would also need to be repartitioned so that /dev/hda1 would be
+a Linux ext3 filesystem.
+
+If the robot still boots but the filesystem is partly damaged,
+another strategy would be to install the CompactFlash interface
+on the robot and supply the kernel boot options to boot from it.
+Then the FLASH drive could be rewritten as a normal device on the
+robot. A riskier strategy would be remount the FLASH drive
+read-only and rewrite it while it is still the root partition;
+the system has so little background activity it might work.
+
+================================================================
+

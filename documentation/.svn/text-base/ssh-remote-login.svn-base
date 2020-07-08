@@ -1,0 +1,56 @@
+2006-09-19
+
+SSH is the Secure SHell, and is the current standard for supporting
+encrypted data transfer across a network.  It can be used for terminal
+access (remote login) or as the transport channel for other programs
+such as svn to communicate between hosts.
+
+SSH is based on public-key cryptography; each machine has a
+public/private key pair used to establish secure communication.  The
+machine key guarantees the encrypted channel, and then the normal
+account password can be used to log in.
+
+E.g., to log into the dutw782 from some arbitrary machine at
+tudelft.nl:
+
+  ssh garthz@dutw782.wbmt.tudelft.nl
+  [will then ask for the garthz password and then log in]
+
+If doing a lot of work involving two secure machines, it can be very
+convenient to setup a personal key on the remote account so that no
+passwords are needed.  Each user then has a secret key stored in the
+~/.ssh/id_dsa and a public key in ~/.ssh/id_dsa.pub.  The public key
+is transferred to the server and is used to validate the user at
+login.  This is safe as long as the private key is not stolen.
+
+To create a public/private key pair on dutw782:
+
+  ssh-keygen -t dsa
+  [ it will ask for a password, which may safely be left blank ]
+
+This creates the key files in ~/.ssh.  The public key id_dsa.pub
+should then be transferred to the remote machine and added to the text
+file ~/.ssh/authorized_keys, creating it if necessary.
+
+The user name on the local and remote computers can be different; this
+is convenient, since each individual key from dutw782 can be added to
+/root/.ssh/authorized_keys on the robot in order to log in as root on
+the robot without a password.
+
+The ssh package also include 'scp', the secure copy program.  To copy
+a file to a remote host:
+
+  scp <filename> <user>@<host>:<path-on-remote-host>
+
+The path by default is relative to the user's home directory.
+
+A concrete example:
+  scp myfile garthz@dutw782.wbmt.tudelft.nl:
+
+In this case the path is empty, so the file will be placed in the home
+directory /home/garthz on dutw782.
+
+  scp myfile garthz@dutw782.wbmt.tudelft.nl:/tmp
+
+In this case the directory is absolute, so it will go in the
+system-wide temporary directory /tmp.

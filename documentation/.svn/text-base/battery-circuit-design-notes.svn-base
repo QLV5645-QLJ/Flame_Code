@@ -1,0 +1,118 @@
+  Battery Circuit Design Notes
+  Author: Garth Zeglin
+  2006-09-14   
+
+This file has design notes for the battery monitor and relay control
+circuit on the Flame robot at TU Delft.  This circuit is part of the
+front panel circuit board, which also contains user interface switches
+and indicator LEDs. Much of the circuit is documented in text directly
+on the schematic; that will not be replicated here.
+
+A primary design goal was to provide voltage monitors to protect each
+battery from deep discharge by automatically shutting off the computer
+supply or motor supply or both.  Another goal was to save motor
+battery power by allowing the controller to shut off power when not in
+operation.  Since the board needed to include switches for manual
+power on and off and emergency stop, it was also a convenient place to
+put the rest of the user interface switches.
+
+Notes.
+
+Batteries.  There are separate batteries for the PC/104 stack and the
+motor drivers.  The computer battery is approximately 11V, and the
+motor battery approximately 30V.
+
+MAX8212CS.  One limitation of the MAX8212CS voltage monitor chip is
+that the supply cannot be as high as 30V; for this reason, the motor
+battery monitor is powered from the computer battery voltage.  This
+does lead to a slight indicator ambiguity; if the computer battery is
+disconnected, the "motor voltage good" LED will always go dark, even
+if the motor battery is sufficiently charged.
+
+Solid State Relays.  The batteries supply substantial currents, so a
+relay was required to switch the supplies.  I chose to use solid state
+relays due to the extremely low control currents; many mechanical
+relays I examined required nearly an ampere of current to stay on, and
+the solid state relays require only 1.6mA.
+
+Computer Relay Control. The first goal was to provide a manual start
+and stop for the computer power, but also allow the computer to shut
+itself off.  The start behavior is provided by means of pushbutton
+switch S1 and latching resistor R3.  The switch supplies relay control
+current, and the latching resistor turns it into a latch via positive
+feedback from the switched supply to the control current; after S1 is
+released the relay will keep itself turned on.  The power-down
+behavior is implemented through a "wire-OR" circuit on the
+11V_RELAY_CTL line; if either switch S2 is closed or transistor Q1 is
+activated, the small latching current will be shunted to ground and
+the relay will turn off.  The automatic turn off is provided by IC1,
+which will de-activate the open-drain output on the battery low
+condition; it is series with the relay, so it will always interrupt
+the relay control current.
+
+Motor Relay Control.  The motor relay control is similar, with a
+latching circuit, an off control, and an automatic shutdown.  However,
+it also includes an E-stop switch to manually disable motor power and
+a power-on control to turn on motor power automatically during
+experiments.  A PCB position is provided for a manual power start, but
+it is unlikely to be necessary.  The circuit is powered by the 11V
+switched supply so the motor relay will always turn off if the
+computer battery shuts off.
+
+Design Errors.
+
+There were two significantly incorrect assumptions in the original
+design.  The first mistake was assuming that the digital I/O outputs
+from the Athena CPU board were 0 to 5V signals; instead they are 0 to
+3.3V signals.  The second was assuming that the relay input is an
+optoisolator diode; although it has polarity marked, it does seem to
+conduct in reverse.
+
+The relay input behavior was a problem because the "battery good"
+indicators source current onto the negative "RTN" inputs; normally
+this current is conducted to ground through the MAX8212CS when voltage
+is good.  When voltage is not good, the MAX8212CS is open, and the
+relay was receiving a reverse control current and turning on
+unexpectedly.  However, this problem was easily fixed by putting a
+diode in series with each relay control to block reverse currents.
+
+The digital drive was more of a problem due to the use of a common
+emitter switching circuit using Q3 to turn the motor relay on. With 5V
+digital inputs, the transistor would have brought 30V_RELAY_CTL up to
+about 4.4V, i.e., 5V base voltage minus the base-emitter drop.  Going
+around the circuit, this would have been 3.8V after the diode drop,
+then the relay drop, then the MAX8212CS output transistor drop. The
+sum of voltage drops would have left just enough margin to turn on the
+relay.
+
+However, with a 3.3V digital drive signal, Q3 can never develop enough
+voltage to overcome the transistor-diode-relay-transistor voltage drop
+with the relay engaged.  The solution was to remove R24 and install a
+voltage divider consisting of a 1K pullup to +5V and a 1K resistor in
+series with MOTOR_POWER_ON in front of R21 on the base of Q3.  This
+lifts the quiescent voltage on the base of Q3 to 2.5V, and the active
+voltage to 4.15V.  In practice, this seems to be enough to activate
+the relay, even though the actual relay voltage is below the rated
+control input range.  Unfortunately, it does also mean that
+30V_RELAY_CTL would be driven to about 1.9V even when inactive; for
+safety, the code has been modified to always drive MOTOR_POWER_OFF to
+sink that current through Q4 to ground whenever the motor supply is
+supposed to be off.
+
+For safety, R30 was also rerouted from GND to the 11V_SWITCHED supply;
+this guarantees that the motor relay is always forced off during
+startup.  This is a concern because the MOTOR_POWER_ON line is reset
+to a digital input at power-up, and so Q3 is biased into conduction
+until the software can initialize the port.  A further detail is that
+the +5V supply takes some time to stabilize, since it is the output of
+a switching supply powered from 11V_SWITCHED.  With this
+configuration, Q4 is guaranteed to be driving the relay off before Q3
+begins to conduct as the +5V supply comes active.
+
+Another minor error was underestimating the A/D converter bias
+currents; the resistors chosen for the voltage dividers which reduce
+the battery voltages for measurement were too large, and the A/D
+converters produced bogus results; these resistor values were
+decreased to increase the measurement signal currents.
+
+

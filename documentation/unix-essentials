@@ -1,0 +1,74 @@
+2006-09-19
+
+A few essential Unix commands to get started.  
+
+<file> and <dir> refer to your particular file or directory name, etc.
+
+man				# read a manual page
+man man				# read the manual on man
+cd <dir>			# change directory
+ls				# list files in current directory
+ls -al				# list files in current directory in a longer format
+pwd				# print working directory
+more <file>			# print out the contents of a file
+ssh <computer-address>		# remotely log in on another machine
+
+rm <file>			# to delete a file
+touch  <file>			# to update the time stamp on a file without changing it
+ln -s <file> <linkname>		# make a symbolic link
+
+chmod				# change file permissions
+chown				# change file owner
+chgrp				# change file group ownership
+
+su				# switch user, by default to superuser (root)
+sync				# make sure all data is flushed to disk from any write buffers
+shutdown -h now			# bring the machine down (root permission required)
+
+xemacs &			# to launch emacs in the background (the & specifies background execution)
+
+================================================================
+make is a rule-based scripting language commonly used to recompile
+programs in the most efficient way.  By default it reads the rules
+from the file named Makefile in the current directory.  The Flame
+Makefiles have a few standard targets set up:
+
+  make			# rebuild everything in the current directory and subdirectories
+  make clean		# remove most generated files to do a fairly complete rebuild
+  make dist-clean	# remove most generated files to do a fairly complete rebuild
+  make install		# copy any updated programs over to the robot using ssh/scp
+
+================================================================
+the "bash" shell
+
+The "shell" is the program which interprets your command lines.  The
+shell will also attempt completion on any file or directory when you
+press TAB.  This saves a huge amount of typing.  I cannot emphasize
+this enough.
+
+Other file naming syntax:
+
+  .	   the current directory
+  ..	   the parent directory
+  ~        the user's home directory
+  ~thijs   another user's home directory
+
+Examples:
+  ls ../documentation		# list the contents of a directory at the same depth as the current one
+  ./control_demo_console	# run a program from the current directory; this is a specific name for it
+  ls ~mwisse                    # list the files from /home/mwisse
+
+The shell will expand wildcards based on files it finds:
+  ls *.c
+  ls */*.c		# list all files ending in .c in all subdirectories
+  ls [a-f]*             # list all files beginning with the lowercase letters a through f
+
+================================================================
+See 'creating-new-users' for notes on how to create new accounts.
+
+
+
+
+
+
+

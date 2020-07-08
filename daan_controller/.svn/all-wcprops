@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller
+END
+CtrlJoints.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlJoints.h
+END
+message_format.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/message_format.h
+END
+CtrlExercise.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlExercise.h
+END
+CtrlStanding.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlStanding.h
+END
+Flame_core.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Flame_core.h
+END
+LookupTables.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/LookupTables.cpp
+END
+polynomials.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/polynomials.cpp
+END
+LookupTables.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/LookupTables.h
+END
+CtrlFlame.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlFlame.cpp
+END
+polynomials.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/polynomials.h
+END
+FlameJoints.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/FlameJoints.cpp
+END
+Makefile-dependencies.bak
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Makefile-dependencies.bak
+END
+CtrlFlame.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlFlame.h
+END
+Makefile-dependencies
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Makefile-dependencies
+END
+FlameJoints.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/FlameJoints.h
+END
+Flame_core_backup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Flame_core_backup.cpp
+END
+CtrlWalking.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlWalking.cpp
+END
+local_protocol_version.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/local_protocol_version.h
+END
+CtrlWalking.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlWalking.h
+END
+StateMachines.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/StateMachines.cpp
+END
+globals.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/globals.h
+END
+Flame_core_helper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Flame_core_helper.cpp
+END
+CtrlJoints.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlJoints.cpp
+END
+Flame_core.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Flame_core.cpp
+END
+CtrlStanding.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlStanding.cpp
+END
+CtrlExercise.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/CtrlExercise.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/Makefile
+END
+StateMachines.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/BME-BMechE/FLAME/!svn/ver/6/trunk/daan_controller/StateMachines.h
+END

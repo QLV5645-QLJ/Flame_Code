@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens
+END
+test_xsens.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/test_xsens.cpp
+END
+MTComm.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/MTComm.h
+END
+xsens.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/xsens.h
+END
+MTCommExample.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/MTCommExample.cpp
+END
+MTComm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/MTComm.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/Makefile
+END
+xsens_glue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/BME-BMechE/FLAME/!svn/ver/6/trunk/xsens/xsens_glue.cpp
+END

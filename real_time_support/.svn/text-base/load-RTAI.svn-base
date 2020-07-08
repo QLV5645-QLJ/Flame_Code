@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Loading RTAI modules with insmod."
+
+if [ ! `whoami` = "root" ]; 
+then
+    echo "Must be root for this to work."
+fi
+
+insmod /usr/realtime/modules/rtai_hal.o
+insmod /usr/realtime/modules/rtai_up.o
+insmod /usr/realtime/modules/rtai_lxrt.o
+insmod /usr/realtime/modules/rtai_sem.o
+insmod /usr/realtime/modules/rtai_mbx.o
+insmod /usr/realtime/modules/rtai_msg.o

@@ -1,0 +1,39 @@
+
+default: libs progs
+
+libs:
+	( cd real_time_support ; make )
+	( cd hardware_drivers ; make )
+	( cd utility ; make )
+	( cd xsens ; make )
+
+progs:
+	( cd test_programs ; make )
+	( cd daan_controller; make )
+	( cd Diamond_utilities ; make )
+	( cd data_utilities ; make )
+
+clean:
+	( cd real_time_support ; make clean )
+	( cd hardware_drivers ; make clean )
+	( cd utility ; make clean )
+	( cd test_programs ; make clean)
+	( cd Diamond_utilities ; make clean )
+	( cd daan_controller ; make clean)
+	( cd data_utilities ; make clean )
+	( cd xsens ; make clean )
+
+dist-clean:
+	( cd real_time_support ; make dist-clean )
+	( cd hardware_drivers ; make dist-clean )
+	( cd utility ; make dist-clean )
+	( cd test_programs ; make dist-clean)
+	( cd Diamond_utilities ; make dist-clean )
+	( cd daan_controller ; make dist-clean)
+	( cd xsens ; make dist-clean )
+
+install:
+	( cd test_programs ; make install )
+	( cd daan_controller ; make install )
+	( cd Diamond_utilities ; make install )
+

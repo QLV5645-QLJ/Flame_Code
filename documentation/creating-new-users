@@ -1,0 +1,41 @@
+2006-09-19
+
+Under Debian Linux a new user thijs can be created as follows:
+
+  su				# switch to superuser
+  [it will ask for the root password]
+  adduser thijs	
+  [it will ask for a new password for thijs]
+
+In order to have correct permissions for accessing everything on the
+machine, the user should also be added to various user groups:
+
+  adduser thijs staff		(essential for svn)
+
+  adduser thijs audio		(most of these are probably not essential)
+  adduser thijs dialout
+  adduser thijs cdrom
+  adduser thijs floppy
+  adduser thijs video
+  adduser thijs plugdev
+
+After the new user logs in the first time, the "groups" command will
+list memberships.
+
+The adduser program will create a home directory in /home and populate
+it with a few configuration files.  These are bare defaults; a usable
+configuration requires some default window setup, etc.  The easiest
+way to do that is to copy over files from some other user and edit
+them:
+
+  su				# become superuser
+  su thijs			# become the new user
+  cd				# switch to the new home directory
+  cp ~mwisse/.bash_profile .
+  cp ~mwisse/.bashrc .
+  cp ~mwisse/.xsession .
+  cp ~mwisse/.twmrc .
+  cp ~mwisse/.Xdefaults .
+
+By switching to the user first, the files will end up with the correct
+permissions, i.e., the new user will own them.

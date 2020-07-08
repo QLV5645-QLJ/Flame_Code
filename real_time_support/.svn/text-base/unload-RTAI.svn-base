@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Removing RTAI modules from kernel with rmmod."
+
+if [ ! `whoami` = "root" ]; 
+then
+    echo "Must be root for this to work."
+fi
+
+rmmod rtai_msg
+rmmod rtai_mbx
+rmmod rtai_sem
+rmmod rtai_lxrt
+rmmod rtai_up
+rmmod rtai_hal
+

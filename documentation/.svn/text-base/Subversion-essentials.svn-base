@@ -1,0 +1,132 @@
+2006-09-19
+
+"Subversion" is the revision control system in use on DUTW782 to hold
+the repository of source code for the Flame bipedal robot.  This
+document is a quick guide to the essential features of Subversion and
+the setup in this lab.
+
+Subversion works with either source code files or binary files, but
+usually the repository only includes original files, not files which
+can be derived by compilation or some other automated process.  E.g.,
+in the Flame sources the automatically generated file system.h does
+not appear in the repository; instead the makevars.scm script which
+creates it is included.
+
+================================================================
+Online Documentation
+
+ man svn		a kind of trivial manual page
+ svn help		more useful built-in help
+ svn help <command>	built-in help on any particular svn command
+
+ http://subversion.tigris.org/				software home page
+ http://svnbook.red-bean.com/nightly/en/index.html	an entire on-line book, the best resource
+
+================================================================
+Basic Usage
+
+Subversion has several different programs available at the command
+line, but nearly everything is done with options to the "svn" command.
+
+On DUTW782, a new copy of the entire code base can be checked out as follows:
+ mkdir Flame       # create a fresh directory to hold the code, can be any name
+ cd Flame
+ svn checkout file:///home/subversion/Flame .
+
+To do the same on another machine:
+ mkdir Flame
+ cd Flame
+ svn checkout svn+ssh://dutw782.wbmt.tudelft.nl/home/subversion/Flame .
+ (This requires normal ssh access, meaning you have a remote login account.)
+
+To bring a svn-controlled directory up-to-date with the repository:
+  svn update
+
+To check whether files in a directory have changed:
+  svn status
+
+To report the exact differences from the repository version:
+  svn diff
+
+To view the history of a file:
+  svn log <filename>
+
+To submit any changes back to the repository:
+  svn commit            # this will open an editor window for the log comment
+  svn commit -m "the log comment may also be included on the command line like this"
+
+Any of the previous commands will operate by default on all files and
+subdirectories of the current directory, but individual files may also
+be specified, e.g.:
+  svn diff Makefile
+  svn commit -m "added my new controller" Makefile
+
+To add a new file:
+  svn add <file-or-directory>
+
+To rename or move a file:
+  svn mv <old-name> <new-name>
+
+================================================================
+Creating the repository 
+
+Creating the repository is a one-time event, but here is the sequence
+of commands used to create the empty repository.  The repository is
+stored in the subversion fsfs format in /home/subversion on dutw782.
+
+ su				# created as superuser
+ mkdir /home/subversion
+ cd /home/subversion
+ svnadmin create --fs-type fsfs Flame
+ svn mkdir file:///home/subversion/Flame/trunk -m "creating main branch"
+ svn mkdir file:///home/subversion/Flame/branches -m "creating subtree for branches"
+ [ went through /home/subversion and enabled g+w permissions on nearly everything ]
+
+Permissions are handled by setting all repository files to group owner
+'admin' and adding everyone to the 'admin' group.  For this to work,
+everyone should keep their umask setting to 002 so that the repository
+files will share group write permission.
+
+================================================================
+Installation 
+
+Since DUTW782 is a Debian Linux system, Subversion was installed
+simply by running this:
+
+  apt-get install svn
+
+================================================================
+Branches
+
+Subversion can also maintain multiple parallel branches of the code.
+The on-line book is the best reference for this; it takes a full
+explanation to really appreciate the reasons for this.
+
+Shortly after the Flame repository was created, a branch was created
+to hold the revisions made by Joe in the spring of 2006.  He made some
+small modifications to test the hipx motor on the bench.  We later
+decided not to include the changes in the main code base.
+
+The branch was created after the fact, but conceptually it represents
+a copy of the existing code with local modifications, stored in a
+separate area of the repository.  In principle, changes made to the
+main code base since the split could be integrated into the branch, or
+the changes in the branch brought back into the main trunk, even
+though the trunk has continued to change since then.
+
+For reference, the branch was created as follows:
+
+  svn copy file:///home/subversion/Flame/trunk file:///home/subversion/Flame/branches/joe -m "creating branch for Joe's version"
+
+That is an operation directly on the repository to "copy" the entire
+main code to the "joe" branch; in reality it is a lazy copy, it
+doesn't actually re-store all the files.
+
+To incorporate the "joe" modifications, the new branch was actually
+checked out in full:
+  cd ~/Flame
+  svn update    [ creates the files for the branch in Flame/branches/joe ]
+
+And then Joe's new code was copied into the branch and committed.
+
+================================================================

@@ -1,0 +1,84 @@
+# DO NOT DELETE
+
+CtrlExercise.o: CtrlExercise.h StateMachines.h
+CtrlFlame.o: CtrlFlame.h StateMachines.h globals.h
+CtrlFlame.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+CtrlFlame.o: ../hardware_drivers/DMM16AT.h ../hardware_drivers/Mesanet_4I36.h
+CtrlFlame.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+CtrlFlame.o: CtrlStanding.h ../utility/utility.h polynomials.h CtrlExercise.h
+CtrlFlame.o: CtrlWalking.h
+CtrlJoints.o: CtrlJoints.h
+CtrlStanding.o: CtrlStanding.h StateMachines.h ../utility/utility.h
+CtrlStanding.o: polynomials.h globals.h ../hardware_drivers/FlameIO.h
+CtrlStanding.o: ../hardware_drivers/AthenaDAQ.h ../hardware_drivers/DMM16AT.h
+CtrlStanding.o: ../hardware_drivers/Mesanet_4I36.h
+CtrlStanding.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+CtrlWalking.o: CtrlWalking.h StateMachines.h ../utility/utility.h
+CtrlWalking.o: polynomials.h globals.h ../hardware_drivers/FlameIO.h
+CtrlWalking.o: ../hardware_drivers/AthenaDAQ.h ../hardware_drivers/DMM16AT.h
+CtrlWalking.o: ../hardware_drivers/Mesanet_4I36.h
+CtrlWalking.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+Flame_core_backup.o: ../hardware_drivers/FlameIO.h
+Flame_core_backup.o: ../hardware_drivers/AthenaDAQ.h
+Flame_core_backup.o: ../hardware_drivers/DMM16AT.h
+Flame_core_backup.o: ../hardware_drivers/Mesanet_4I36.h
+Flame_core_backup.o: ../hardware_drivers/FlameIO_defs.h ../utility/utility.h
+Flame_core_backup.o: ../real_time_support/RTAI_user_space_realtime.h
+Flame_core_backup.o: ../real_time_support/RTAI_mailbox_messaging.h
+Flame_core_backup.o: ../real_time_support/messaging.h
+Flame_core_backup.o: ../real_time_support/messages.h
+Flame_core_backup.o: ../real_time_support/UDP_messaging.h
+Flame_core_backup.o: ../real_time_support/protocol_version.h
+Flame_core_backup.o: local_protocol_version.h message_format.h Flame_core.h
+Flame_core_backup.o: globals.h FlameJoints.h CtrlJoints.h CtrlFlame.h
+Flame_core_backup.o: StateMachines.h CtrlStanding.h polynomials.h
+Flame_core_backup.o: CtrlExercise.h CtrlWalking.h
+Flame_core.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+Flame_core.o: ../hardware_drivers/DMM16AT.h
+Flame_core.o: ../hardware_drivers/Mesanet_4I36.h
+Flame_core.o: ../hardware_drivers/FlameIO_defs.h ../utility/utility.h
+Flame_core.o: ../real_time_support/RTAI_user_space_realtime.h
+Flame_core.o: ../real_time_support/RTAI_mailbox_messaging.h
+Flame_core.o: ../real_time_support/messaging.h
+Flame_core.o: ../real_time_support/messages.h
+Flame_core.o: ../real_time_support/UDP_messaging.h
+Flame_core.o: ../real_time_support/protocol_version.h
+Flame_core.o: local_protocol_version.h Flame_core.h globals.h FlameJoints.h
+Flame_core.o: CtrlJoints.h CtrlFlame.h StateMachines.h CtrlStanding.h
+Flame_core.o: polynomials.h CtrlExercise.h CtrlWalking.h message_format.h
+FlameJoints.o: FlameJoints.h CtrlJoints.h ../hardware_drivers/FlameIO_defs.h
+FlameJoints.o: globals.h ../hardware_drivers/FlameIO.h
+FlameJoints.o: ../hardware_drivers/AthenaDAQ.h ../hardware_drivers/DMM16AT.h
+FlameJoints.o: ../hardware_drivers/Mesanet_4I36.h
+StateMachines.o: StateMachines.h globals.h ../hardware_drivers/FlameIO.h
+StateMachines.o: ../hardware_drivers/AthenaDAQ.h
+StateMachines.o: ../hardware_drivers/DMM16AT.h
+StateMachines.o: ../hardware_drivers/Mesanet_4I36.h
+StateMachines.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h
+StateMachines.o: CtrlJoints.h
+CtrlExercise.o: StateMachines.h
+CtrlFlame.o: StateMachines.h globals.h ../hardware_drivers/FlameIO.h
+CtrlFlame.o: ../hardware_drivers/AthenaDAQ.h ../hardware_drivers/DMM16AT.h
+CtrlFlame.o: ../hardware_drivers/Mesanet_4I36.h
+CtrlFlame.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+CtrlStanding.o: StateMachines.h ../utility/utility.h polynomials.h globals.h
+CtrlStanding.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+CtrlStanding.o: ../hardware_drivers/DMM16AT.h
+CtrlStanding.o: ../hardware_drivers/Mesanet_4I36.h
+CtrlStanding.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+CtrlWalking.o: StateMachines.h ../utility/utility.h polynomials.h globals.h
+CtrlWalking.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+CtrlWalking.o: ../hardware_drivers/DMM16AT.h
+CtrlWalking.o: ../hardware_drivers/Mesanet_4I36.h
+CtrlWalking.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+Flame_core.o: globals.h ../hardware_drivers/FlameIO.h
+Flame_core.o: ../hardware_drivers/AthenaDAQ.h ../hardware_drivers/DMM16AT.h
+Flame_core.o: ../hardware_drivers/Mesanet_4I36.h
+Flame_core.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+Flame_core.o: CtrlFlame.h StateMachines.h CtrlStanding.h ../utility/utility.h
+Flame_core.o: polynomials.h CtrlExercise.h CtrlWalking.h
+FlameJoints.o: CtrlJoints.h ../hardware_drivers/FlameIO_defs.h
+globals.o: ../hardware_drivers/FlameIO.h ../hardware_drivers/AthenaDAQ.h
+globals.o: ../hardware_drivers/DMM16AT.h ../hardware_drivers/Mesanet_4I36.h
+globals.o: ../hardware_drivers/FlameIO_defs.h FlameJoints.h CtrlJoints.h
+message_format.o: ../real_time_support/messages.h

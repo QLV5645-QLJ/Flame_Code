@@ -1,0 +1,23 @@
+mode 0
+powered 0
+
+joint.hipx.kp 1000.0
+joint.hipx.kd 10.0
+
+joint.l.hipy.kp 80.0
+joint.l.hipy.kd 0.5
+joint.r.hipy.kp 80.0
+joint.r.hipy.kd 0.5
+
+joint.l.knee.kp 50.0
+joint.l.knee.kd 0.2
+joint.r.knee.kp 50.0
+joint.r.knee.kd 0.2
+
+joint.l.ankley.kp 4.0
+joint.l.ankley.kd 0.1
+joint.r.ankley.kp 4.0
+joint.r.ankley.kd 0.1
+
+
+

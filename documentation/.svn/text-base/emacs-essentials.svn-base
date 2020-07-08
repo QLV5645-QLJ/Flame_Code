@@ -1,0 +1,71 @@
+2006-09-19
+
+emacs is a powerful text editor well suited for program code.  It is
+by no means the only option.
+
+On dutw782 is currently installed the emacs variant 'XEmacs'.  It is a
+fork of the original emacs, and is very compatible, and some say it
+has better window support.
+
+To start XEmacs from the command line as a windowed application:
+
+ xemacs &
+
+To start emacs from the command line in the background as a text
+terminal program, or over a ssh link:
+
+ xemacs -nw
+
+In the emacs syntax for command keys, C refers to control and M to
+meta.  The definition of meta depends on the specific installation,
+but is usually the ALT key.  Meta can also be specified by prefixing
+the ESC key.
+
+Examples:
+
+ C-p		control-p		move to previous line
+ C-n		control-n		move to next line
+ C-v		control-v		move to next page
+ M-v		alt-v or ESC v		move to previous page
+ C-x C-s	control-x control-s	save file
+ C-x C-f	control-x control-f	open a file
+ C-x C-c	control-x control-c	exit emacs
+ C-x u		control-x u		undo
+ C-x C-q	control-x control-q	toggle read-only
+ C-g		control-g		interrupt, useful for stopping or quitting actions
+
+ M-x compile	alt-x compile		run 'make' from within emacs
+ ESC x compile				same thing using the alternate meta format
+ C-h t		control-h t		enter the emacs tutorial
+ C-s		control-s		incremental search forward
+ C-k		control-k		kill (cut) until end of line
+ C-y		control-y		yank (paste) previous cut buffer
+ M-y		alt-y or ESC y		after C-y, cycle through the history of previous cut lines
+
+ 
+Emacs allows keeping an arbitrary number of files open in different buffers.
+ C-x b		switch to another buffer
+ C-x C-b	show the list of all open files
+
+The display can be split into multiple panels known as "windows".
+ C-x 2		split the display into two windows
+ C-x o		switch the cursor to another window
+ C-x 0		close the current window (does not affect the buffer or file)
+
+Multiple windows can also be opened, known as "frames".
+
+================================================================
+XEmacs can be configured by writing emacs lisp scripts in
+the ~/.xemacs directory.  Here is a simple ~/.xemacs/init.el file:
+
+;; This is configuration file for XEmacs, which of course is an Emacs 
+;; Lisp program. 
+                                     
+;; enable syntax highlighting 
+(turn-on-font-lock) 
+ 
+;; make the window title simply Xemacs, not the file name 
+(setq frame-title-format "XEmacs") 
+(setq frame-icon-title-format "XEmacs") 
+
+================================================================
