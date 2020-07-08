@@ -1,0 +1,125 @@
+#! /bin/sh
+
+staging=${DESTDIR}
+prefix="/usr/realtime"
+exec_prefix="${prefix}"
+libdir="${exec_prefix}/lib"
+datadir="${prefix}/share"
+pkgdatadir="${datadir}/rtai"
+includedir="${prefix}/include"
+
+RTAI_VERSION="3.2"
+RTAI_PREFIX="${staging}${prefix}"
+RTAI_CC="gcc"
+RTAI_CXX="g++"
+RTAI_TARGET_ARCH="i386"
+RTAI_TARGET_SUBARCH=""
+RTAI_CONFIG="${staging}${pkgdatadir}/config-rtai-${RTAI_VERSION}"
+RTAI_LINUX_DIR="/usr/src/linux"
+RTAI_LINUX_VERSION="2.4.27"
+RTAI_KERNEL_CFLAGS="-I.  -I${staging}${includedir} -D__KERNEL__ -I/usr/src/kernel-source-2.4.27/include -Wall -Wstrict-prototypes -Wno-trigraphs -O2 -fno-strict-aliasing -fno-common -fomit-frame-pointer -pipe -mpreferred-stack-boundary=2 -march=i486 -DMODULE -DEXPORT_SYMTAB -Wall -ffast-math -mhard-float"
+RTAI_KERNEL_CXXFLAGS="-I.  -I${staging}${includedir} -D__KERNEL__ -I/usr/src/kernel-source-2.4.27/include -Wall -Wstrict-prototypes -Wno-trigraphs -O2 -fno-strict-aliasing -fno-common -fomit-frame-pointer -pipe -mpreferred-stack-boundary=2 -march=i486 -DMODULE -DEXPORT_SYMTAB -Wall -fno-rtti -fno-exceptions -fno-strength-reduce -pipe -ffast-math -mhard-float"
+RTAI_MODULE_DIR="${staging}${exec_prefix}/modules"
+RTAI_LXRT_CFLAGS="-I.  -I${staging}${includedir} -O2 -I/usr/src/linux/include -Wall -Wstrict-prototypes -pipe"
+RTAI_LXRT_LDFLAGS="-L${staging}${libdir}  -lpthread"
+RTAI_LIBRARY_DIR="${staging}${libdir}"
+COMEDI_DIR=""
+EFLTK_DIR=""
+RTAI_MODULE_EXT=".o"
+
+unset prefix exec_prefix libdir datadir pkgdatadir includedir
+
+usage ()
+{
+cat <<EOF
+Usage rtai-config OPTIONS
+Options :
+        --help
+        --version
+        --cc
+        --cxx
+        --arch
+        --subarch
+        --prefix
+        --config
+        --module-cflags
+        --module-cxxflags
+        --module-ext
+        --lxrt-cflags
+        --lxrt-ldflags
+        --linux-dir
+        --linux-version
+        --module-dir
+        --library-dir
+        --comedi-dir
+        --efltk-dir
+EOF
+    exit $1
+}
+
+if test $# -eq 0; then
+    usage 1 1>&2
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+        --version)
+            echo $RTAI_VERSION
+            ;;
+        --cc)
+            echo $RTAI_CC
+            ;;
+        --cxx)
+            echo $RTAI_CXX
+            ;;
+        --arch)
+            echo $RTAI_TARGET_ARCH
+            ;;
+        --subarch)
+            echo $RTAI_TARGET_SUBARCH
+            ;;
+        --prefix)
+            echo $RTAI_PREFIX
+            ;;
+        --config)
+            echo $RTAI_CONFIG
+            ;;
+        --mod*-cflags|--kernel-cflags)
+            echo $RTAI_KERNEL_CFLAGS
+            ;;
+        --mod*-ext)
+            echo $RTAI_MODULE_EXT
+            ;;
+        --mod*-cxxflags|--kernel-cxxflags)
+            echo $RTAI_KERNEL_CXXFLAGS
+            ;;
+        --lxrt-cflags|--user-cflags)
+            echo $RTAI_LXRT_CFLAGS
+            ;;
+        --lxrt-ldflags)
+            echo $RTAI_LXRT_LDFLAGS
+            ;;
+        --mod*-dir)
+            echo $RTAI_MODULE_DIR
+            ;;
+        --lib*-dir|--libdir|--user-libdir)
+            echo $RTAI_LIBRARY_DIR
+            ;;
+        --linux-dir|--linux)
+            echo $RTAI_LINUX_DIR
+            ;;
+        --linux-ver*)
+            echo $RTAI_LINUX_VERSION
+            ;;
+        --comedi-dir)
+            echo $COMEDI_DIR
+            ;;
+        --efltk-dir)
+            echo $EFLTK_DIR
+            ;;
+        *)
+         usage 1 1>&2
+         ;;
+    esac
+    shift
+done
